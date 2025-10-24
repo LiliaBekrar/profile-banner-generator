@@ -1,10 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss";
-
+:root {
+  --heart-color: #e63946;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ----- CŒUR BATTANT + HALO INTENSE ----- */
+.heart-svg {
+  color: var(--heart-color);
+  display: inline-block;
+  vertical-align: -3px;
+  transform-origin: center;
+  transform-box: fill-box;
+  will-change: transform, filter;
+  animation:
+    beat 1.2s ease-in-out infinite,
+    glow 2s ease-in-out infinite;
+}
+
+/* Battement constant */
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  25%      { transform: scale(1.18); }
+  50%      { transform: scale(1); }
+  75%      { transform: scale(1.18); }
+}
+
+/* Glow plus large et vibrant */
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0px var(--heart-color))
+            drop-shadow(0 0 0px var(--heart-color));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--heart-color))
+            drop-shadow(0 0 24px color-mix(in oklab, var(--heart-color) 60%, white))
+            drop-shadow(0 0 48px color-mix(in oklab, var(--heart-color) 30%, white));
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .heart-svg { 
+    animation: none; 
+  }
+}

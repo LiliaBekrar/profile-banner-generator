@@ -3,6 +3,7 @@
  * Gère l'état global et orchestre les sous-composants
  */
 
+// @ts-ignore
 import React, { useState, useRef } from 'react';
 import { Sparkles } from 'lucide-react';
 import type { BannerData, GithubStats, GithubStatType } from './types';
@@ -156,6 +157,27 @@ function App() {
           />
         </div>
       </div>
+      {/* Footer avec cœur animé */}
+      <footer className="mt-12 pt-8 border-t border-white/10">
+        <div className="text-center">
+          <p className="text-purple-200 text-sm flex items-center justify-center gap-2">
+            © {new Date().getFullYear()} Made with
+            <svg 
+              className="heart-svg" 
+              viewBox="0 0 24 24" 
+              width="22" 
+              height="22" 
+              aria-hidden="true"
+            >
+              <path
+                d="M12 21s-6.7-4.36-9.33-7A6.25 6.25 0 1 1 12 5.23 6.25 6.25 0 1 1 21.33 14c-2.63 2.64-9.33 7-9.33 7z"
+                fill="currentColor"
+              />
+            </svg>
+            by <span className="font-semibold text-purple-100">Lilia</span>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
